@@ -1,0 +1,17 @@
+
+$continue: keep running the code
+$nexti
+$next: execute next command
+
+$break main.c:91 put a breakpoint in main.c at line 91
+$step: step into function
+$run: execute the code
+$print buffer: print the content of buffer, you can do address of, indexing, reference etc.
+$lay next
+$where
+#list
+$info registers
+$cgdb run: instead of using gdb, one can also use cgdb
+$watch x, see everytime the value of x changes
+$break 30, stop at line 30 of current file
+$clear 30, clears breakpoints

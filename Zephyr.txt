@@ -1,0 +1,20 @@
+1) Make the environmental active this is Python stuff
+source ~/zephyrproject/.venv/bin/activate
+
+2) Directory where everything is stored
+cd ~/zephyrproject/zephyr
+
+3) west build
+
+4) west debug
+
+5) List all the boards
+west boards
+
+6) Building a certain projects. You must be inside directory spoken about at point 3. 
+west build -p always -b nrf9160dk/nrf9160 samples/basic/blinky
+west build -p always -b nrf7002dk/nrf5340/cpuapp samples/basic/blinky
+west build -p always -b nucleo_f401re samples/basic/blinky
+
+8) Flashing your selected board
+west flash

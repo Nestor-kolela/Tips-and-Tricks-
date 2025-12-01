@@ -1,0 +1,2 @@
+1) Delete a directory and its subdirectories
+rmdir /s directory

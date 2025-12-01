@@ -1,0 +1,3 @@
+View the number line
+:set nu
+
