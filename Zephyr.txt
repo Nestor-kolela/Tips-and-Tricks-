@@ -27,3 +27,8 @@ https://docs.zephyrproject.org/latest/develop/toolchains/zephyr_sdk.html#toolcha
 10) How to activate an environment for west development. 
 zephyrproject\.venv\Scripts\activate.bat
 
+11) Different debuggers 
+west flash --runner openocd
+west flash --runner jlink
+west flash --runner pyocd
+

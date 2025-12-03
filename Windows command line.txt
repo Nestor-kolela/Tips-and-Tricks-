@@ -1,9 +1,0 @@
-1) Clear the screen
-cls
-
-2) Delete a file
-del filename
-
-3) Delete a directory recursively
-rmdir /s directoryName
-

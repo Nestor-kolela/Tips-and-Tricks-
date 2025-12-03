@@ -1,2 +1,19 @@
 1) Delete a directory and its subdirectories
 rmdir /s directory
+
+2) Clear the screen
+cls
+
+3) Delete a file
+del filename
+
+4) Delete a directory recursively
+rmdir /s directoryName
+
+5) Adding certain items to path such as 7z, or openocd
+- Windows button + R
+- Type sysdm.cpl
+- Go to Advanced tab -> Environment Variables
+- System variables (not new user variables)
+- Click New, Paste
+
