@@ -18,3 +18,8 @@ west build -p always -b nucleo_f401re samples/basic/blinky
 
 8) Flashing your selected board
 west flash
+
+9) west sdk install --version 0.17.4
+Links for the releases:
+https://github.com/zephyrproject-rtos/sdk-ng/tags
+https://docs.zephyrproject.org/latest/develop/toolchains/zephyr_sdk.html#toolchain-zephyr-sdk-install

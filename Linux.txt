@@ -17,7 +17,7 @@ sudo shutdown -h now
 /media/nestor/
 
 7) Check the content of HEX or binary files. -b -c -C -d -e -f -L -n -o -s -v -x
-hexdump -C file
+hexdump -C filename
 
 8) Check the type of file by typing 
 file file_name

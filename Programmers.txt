@@ -1,0 +1,6 @@
+1) STM uses the programmer found at this directory
+/home/nestor/STMicroelectronics/STM32Cube/STM32CubeProgrammer
+
+2) Nordic 
+nrfutil which needs to be copied to the correct directory with: 
+sudo mv ~/Downloads/nrfutil /usr/local/bin/
