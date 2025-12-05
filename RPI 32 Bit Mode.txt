@@ -1,0 +1,32 @@
+RPI Bootloader U-boot
+1) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
+2) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- rpi_arm64_defconfig
+3) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
+4) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- make -j$(nproc)
+
+RPI Linux Kernel, Modules etc.
+1) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
+2) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
+3) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
+4) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j$(nproc)
+5) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=/media/nestor/rootfs modules_install
+
+U-boot Commands
+1) setenv serverip 192.168.8.236
+2) setenv ipaddr 192.168.8.246
+3) ping 192.168.8.236
+4) tftpboot 0x00080000  ImageRPI
+5) tftpboot 0x05600000  bcm2711-rpi-4-b.dtb
+6) tftpboot 0x05700000  initram
+7) setenv bootargs '8250.nr_uarts=1 console=ttyS0,115200 console=tty1 root=/dev/mmcblk1p2 rootfstype=ext4 fsck.repair=yes rootwait'
+9) booti 0x00080000 - 0x05600000
+
+mkenvimage -s 0x4000 -o uboot.env Hello.env /
+
+Buildroot Compilation (It has kernel, busybox and utilities)
+1) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- raspberrypi4_64_defconfig
+2) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
+3) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j$(nproc)
+
+/home/nestor/Documents/RPI/uboot/u-boot/configs/rpi_arm64_defconfig
+/home/nestor/Documents/RPI/linux/arch/arm64/configs/bcm2711_defconfig

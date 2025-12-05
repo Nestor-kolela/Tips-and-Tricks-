@@ -1,3 +1,12 @@
-View the number line
+1) View the number line
 :set nu
+
+2) Cut a line
+dd
+
+3) Copy a line
+yy
+
+4) Past a line 
+p
 

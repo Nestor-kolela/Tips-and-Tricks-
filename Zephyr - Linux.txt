@@ -1,0 +1,18 @@
+1) Activate the environment
+source ~/zephyrproject/.venv/bin/activate
+
+2) Build
+west build -p always -b nucleo_f401re samples/basic/blinky
+
+3) west build -p always -b nucleo_f401reNestor samples/nestor/blinky
+
+4) Menu config
+west build -t menuconfig
+
+5) When something goes wrong delete all builds
+rm -rf ./build/ from inside zephyrproject/zephyr
+
+6) Opening menuconfig
+west build -t menuconfig
+
+

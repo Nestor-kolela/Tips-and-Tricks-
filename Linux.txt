@@ -28,3 +28,10 @@ chmod +x
 10) sudo apt remove --purge xxsoftware
 
 11) sudo apt autoremove
+
+12) Install compiler for ARM64 bit architecture
+
+sudo apt install gcc-aarch64-linux-gnu
+
+13) Which bindings are important when writing device tree? 
+Documentation/devicetree/bindings
