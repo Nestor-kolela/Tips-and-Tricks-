@@ -23,7 +23,7 @@ hexdump -C filename
 file file_name
 
 9) Make file executable
-chmod +x 
+chmod +x filename
 
 10) sudo apt remove --purge xxsoftware
 
@@ -35,3 +35,9 @@ sudo apt install gcc-aarch64-linux-gnu
 
 13) Which bindings are important when writing device tree? 
 Documentation/devicetree/bindings
+
+14) cat /proc/interrupts
+Checking interrupts, which core handled and how many times
+
+15) Check what version of Linux is running on a certain processor
+uname -r or -m or -a

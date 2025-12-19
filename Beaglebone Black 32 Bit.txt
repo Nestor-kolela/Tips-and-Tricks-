@@ -1,0 +1,83 @@
+Beaglebone Commands Linux
+1) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
+2) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bb.org_defconfig
+3) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
+4) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j8
+5) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j8 modules
+6) sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=/media/nestor/root modules_install
+   //Maybe for extra information. 
+   make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j8 zImage modules dtbs
+
+5.10.168-ti-r82
+
+Buildroot Compilation (It has kernel, busybox and utilities)
+1) make CROSS_COMPILE=arm-linux-gnueabihf- beaglebone_defconfig
+2) make CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
+3) make CROSS_COMPILE=arm-linux-gnueabihf- -j$(nproc)
+
+Building u-boot
+1) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
+2) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am335x_evm_defconfig
+3) make CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
+4) make CROSS_COMPILE=arm-linux-gnueabihf- -j$(nproc)
+
+
+Loading everything from SD Card
+1) ext4load mmc 0:3 0x82000000 /boot/vmlinuz-6.12.28-bone26
+2) ext4load mmc 0:3 0x88000000 /boot/dtbs/6.12.28-bone26/am335x-boneblack.dtb
+3) ext4load mmc 0:3 0x88080000 /boot/initrd.img-6.12.28-bone26
+4) setenv bootargs 'console=ttyS0,115200n8 root=/dev/mmcblk0p3 ro rootfstype=ext4 rootwait coherent_pool=1M net.ifnames=0 lpj=1990656 rng_core.default_quality=100 quiet'
+or setenv bootargs 'console=ttyS0,115200n8 root=/dev/mmcblk0p3 ro rootfstype=ext4 rootwait coherent_pool=1M net.ifnames=0 lpj=1990656 rng_core.default_quality=100 quiet capemgr.enable_partno=BB-SPI1-01'
+5) bootz 0x82000000 - 0x88000000
+
+Some Very old initramfs stuff
+1) mkimage -A arm -O Linux -T ramdisk -C none -a 0x80800000 -n "Root Filesystem" -d ../initramfs.gz  ../initramfs
+
+Making a uboot.env file
+Paste this into an ASCII FILE
+serverip=192.168.8.236
+ipaddr=192.168.8.220
+bootargs=console=ttyS0,115200n8 root=/dev/mmcblk0p3 ro rootfstype=ext4 rootwait coherent_pool=1M net.ifnames=0 lpj=1990656 rng_core.default_quality=100 quiet
+
+New stuff
+
+serverip=192.168.8.236
+ipaddr=192.168.8.220
+bootargs=console=ttyS0,115200n8 root=/dev/mmcblk0p3 ro rootfstype=ext4 rootwait coherent_pool=1M net.ifnames=0 lpj=1990656 rng_core.default_quality=100 quiet capemgr.enable_partno=BB-SPI1-01
+bootcmd=tftpboot 0x82000000 zImage; tftpboot 0x880000000 am335x-boneblack.dtb; bootz 0x82000000 - 0x88000000
+
+1) mkenvimage -s 0x20000 -o uboot.env Hello.env
+2) hexdump -C ./uboot.env
+
+Loading using tftp 
+1) setenv serverip 192.168.8.236
+2) setenv ipaddr 192.168.8.220
+3) ping 192.168.8.236
+4) tftpboot 0x82000000 zImage
+5) tftpboot 0x88000000 am335x-boneblack.dtb
+6) tftpboot 0x88080000 initramfs
+7) setenv bootargs 'console=ttyS0,115200n8 root=/dev/mmcblk0p2 ro rootfstype=ext4 rootwait coherent_pool=1M net.ifnames=0 lpj=1990656 rng_core.default_quality=100 quiet capemgr.enable_partno=BB-SPI1-01'
+8) setenv bootargs 'console=ttyS0,115200n8 root=/dev/mmcblk0p3 ro rootfstype=ext4 rootwait coherent_pool=1M net.ifnames=0 lpj=1990656 rng_core.default_quality=100 quiet'
+9) bootz 0x82000000 - 0x88000000
+
+uboot_overlay_addr4=/lib/firmware/BB-SPIDEV1-00A0.dtbo
+uboot_overlay_addr0=/lib/firmware/BB-SPIDEV0-00A0.dtbo
+
+sudo config-pin P9_17 spi_cs  # Chip Select for SPI1
+sudo config-pin P9_18 spi       # Master Out Slave In (MOSI) for SPI1
+sudo config-pin P9_21 spi       # Master In Slave Out (MISO) for SPI1
+sudo config-pin P9_22 spi_sclk  # Serial Clock (SCLK) for SPI1
+
+sudo config-pin P9_28 spi_cs  # Chip Select for SPI0
+sudo config-pin P9_29 spi       # MOSI for SPI0
+sudo config-pin P9_30 spi       # MISO for SPI0
+sudo config-pin P9_31 spi_sclk  # SCLK for SPI0
+
+How to format EMMC
+1) lsblk
+2) sudo umount /dev/mmcblk1p1 2>/dev/null //For partition one
+3) sudo umount /dev/mmcblk1p2 2>/dev/null //For partition two
+4) sudo dd if=/dev/zero of=/dev/mmcblk1 bs=4M status=progress conv=fsync //dd is for copy and formatting as well if you like. 
+
+
+
