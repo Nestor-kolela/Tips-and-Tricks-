@@ -41,3 +41,6 @@ Checking interrupts, which core handled and how many times
 
 15) Check what version of Linux is running on a certain processor
 uname -r or -m or -a
+
+16) How to search recursively a directory and its subdirectories
+find ./ -name "Hello" where Hello is the name of the file. ./ is the directory
