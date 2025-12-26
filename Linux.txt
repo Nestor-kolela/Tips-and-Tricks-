@@ -44,3 +44,18 @@ uname -r or -m or -a
 
 16) How to search recursively a directory and its subdirectories
 find ./ -name "Hello" where Hello is the name of the file. ./ is the directory
+
+17) How to extract files from file.tar.gz
+tar -xf file.tar.gz
+
+18) How to add certain properties to a file
+chmod +x file to add executability
+chmod -x file to remove executability
+
+19) How to know the size of a directory or a file
+du -h
+
+21) How to know the size of disks and everything
+df -h
+
+

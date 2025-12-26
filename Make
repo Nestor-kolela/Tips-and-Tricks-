@@ -1,0 +1,7 @@
+app: main.o
+	g++ -Wall -Werror main.o -o app
+main.o: main.cpp
+	g++ -Wall -Werror -c main.cpp -o main.o
+
+clean:
+	rm -rf ./*.o app 
