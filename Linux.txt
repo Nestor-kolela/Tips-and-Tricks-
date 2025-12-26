@@ -58,4 +58,92 @@ du -h
 21) How to know the size of disks and everything
 df -h
 
+22) How to edit a crontab
+crontab -e
 
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l22) How to edit a crontab
+crontab -e
+
+23) How to list all crontab
+crontab -l
