@@ -147,3 +147,6 @@ crontab -e
 
 23) How to list all crontab
 crontab -l
+
+24) How to see assembly instuctions of a certain executable file.
+objdump -d /usb/sbin/i2cdetect
