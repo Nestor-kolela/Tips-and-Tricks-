@@ -150,3 +150,13 @@ crontab -l
 
 24) How to see assembly instuctions of a certain executable file.
 objdump -d /usb/sbin/i2cdetect
+
+25) How to know what version of Linux GLIB you are using 
+ldd -v or ldd --version
+
+26) Copy files from one PC to another using scp
+scp filename pi@192.168.8.254:/home/pi
+
+27) How to copy files remote or locally using rsync
+rsync source destination
+rsync -avz pi@192.168.8.254:/home/pi/ destination
