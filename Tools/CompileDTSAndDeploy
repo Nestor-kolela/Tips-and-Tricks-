@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -e
+
+# ---- Configuration ----
+ARCH=arm64
+CROSS=aarch64-linux-gnu-
+DTB=k3-am67a-beagley-ai.dtb
+DTB_PATH=arch/arm64/boot/dts/ti
+TARGET=debian@192.168.8.198
+TARGET_DTB_DIR=/boot/firmware/ti
+
+# ---- Build DTBs ----
+echo "[*] Building DTBs..."
+make ARCH=$ARCH CROSS_COMPILE=$CROSS -j$(nproc) dtbs
+
+# ---- Deploy DTB ----
+echo "[*] Deploying DTB to BeagleBone AI..."
+scp "$DTB_PATH/$DTB" "$TARGET:$TARGET_DTB_DIR/"
+
+# ---- Reboot Target ----
+echo "[*] Rebooting target..."
+#%ssh -tt "$TARGET" "sudo -n reboot"
+ssh -tt "$TARGET" "sudo shutdown -r now"
+
+echo "[✓] DTB deployed and reboot issued successfully"

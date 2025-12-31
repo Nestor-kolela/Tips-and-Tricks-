@@ -1,0 +1,7 @@
+1) How to start the app for writing to the SD cards
+WGPU_BACKEND=gl ./bb-imager-gui_0.0.17_x86_64.AppImage
+
+or
+
+WGPU_BACKEND=opengl ./bb-imager-gui_0.0.17_x86_64.AppImage
+

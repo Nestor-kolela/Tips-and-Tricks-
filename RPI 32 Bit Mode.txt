@@ -10,6 +10,11 @@ RPI Linux Kernel, Modules etc.
 3) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
 4) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j$(nproc)
 5) make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=/media/nestor/rootfs modules_install
+6) How to compile a dtbs file changing making changes to DTB files. 
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j$(nproc) dtbs
+
+7) How to deploy a dtb file after making changes to it
+scp arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dtb root@192.168.8.254:/boot/
 
 U-boot Commands
 1) setenv serverip 192.168.8.236

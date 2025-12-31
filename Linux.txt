@@ -65,89 +65,6 @@ crontab -e
 crontab -l22) How to edit a crontab
 crontab -e
 
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l22) How to edit a crontab
-crontab -e
-
-23) How to list all crontab
-crontab -l
-
 24) How to see assembly instuctions of a certain executable file.
 objdump -d /usb/sbin/i2cdetect
 
@@ -160,3 +77,22 @@ scp filename pi@192.168.8.254:/home/pi
 27) How to copy files remote or locally using rsync
 rsync source destination
 rsync -avz pi@192.168.8.254:/home/pi/ destination
+
+28) How to know the size of a directory 
+du -h
+du -h --summarize
+du -h --max-depth=0
+
+29) Disable all password prompts
+- sudo visudo
+- Add line: nestor ALL=(ALL) NOPASSWD: ALL where nestor is the username
+
+30) SSH into a remote session without a password
+ssh-keygen -t ed25519 -C "debian@192.168.8.168"
+ssh-copy-id debian@192.168.8.198
+
+31) View what a user can do
+sudo -l
+
+32) Know the occurence or where a certain function is defined. 
+rg -n J722S_MCU_IOPAD
