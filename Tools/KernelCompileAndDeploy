@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+set -e
+
+# -------- Configuration --------
+ARCH=arm64
+CROSS_COMPILE=aarch64-linux-gnu-
+JOBS=8
+
+ROOTFS="/media/nestor/rootfs"
+BOOT="/media/nestor/BOOT"
+
+# -------- Helper functions --------
+info() {
+    echo -e "\n\033[1;34m==> $1\033[0m"
+}
+
+is_mounted() {
+    mountpoint -q "$1"
+}
+
+# -------- Build kernel --------
+info "Building kernel"
+make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} -j${JOBS}
+
+# -------- Install kernel modules --------
+info "Installing kernel modules to ${ROOTFS}"
+sudo make \
+  ARCH=${ARCH} \
+  CROSS_COMPILE=${CROSS_COMPILE} \
+  INSTALL_MOD_PATH="${ROOTFS}" \
+  modules_install
+
+# -------- Ensure destination directories exist --------
+info "Preparing BOOT directories"
+mkdir -p "${BOOT}/overlays"
+mkdir -p "${BOOT}/ti"
+
+# -------- Copy kernel image (with progress) --------
+info "Copying kernel Image.gz"
+pv arch/arm64/boot/Image.gz > "${BOOT}/Image.gz"
+
+# -------- Copy DT overlays (with progress) --------
+info "Copying DT overlays"
+pv arch/arm64/boot/dts/ti/*.dtbo > /dev/null
+cp -v arch/arm64/boot/dts/ti/*.dtbo "${BOOT}/overlays/"
+
+# -------- Copy main DTB (with progress) --------
+info "Copying main DTB"
+pv arch/arm64/boot/dts/ti/k3-am67a-beagley-ai.dtb > "${BOOT}/ti/k3-am67a-beagley-ai.dtb"
+
+# -------- Sync writes --------
+info "Syncing filesystem buffers"
+sync
+
+# -------- Automatically unmount --------
+info "Unmounting filesystems"
+
+if is_mounted "${BOOT}"; then
+    sudo umount "${BOOT}"
+    echo "Unmounted ${BOOT}"
+else
+    echo "${BOOT} not mounted, skipping"
+fi
+
+if is_mounted "${ROOTFS}"; then
+    sudo umount "${ROOTFS}"
+    echo "Unmounted ${ROOTFS}"
+else
+    echo "${ROOTFS} not mounted, skipping"
+fi
+
+info "Kernel install complete ✔"
+

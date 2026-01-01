@@ -10,3 +10,13 @@ yy
 4) Past a line 
 p
 
+5) go to the beginning of a file
+gg
+
+6) Copy multiple lines
+v (visual mode, then scroll and select)
+
+7) Erase a character
+x
+
+

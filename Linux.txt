@@ -95,4 +95,14 @@ ssh-copy-id debian@192.168.8.198
 sudo -l
 
 32) Know the occurence or where a certain function is defined. 
-rg -n J722S_MCU_IOPAD
+rg -n J722S_MCU_IOPAD 
+The command can be found at sudo apt install ripgrep
+
+33) How to detect devices that connected to i2c bus
+i2cdetect -y 1
+
+34) List all I2C buses
+i2cdetect -l
+
+35) How minicom data into a file
+sudo minicom -C /home/nestor/serial.log -D /dev/ttyUSB0
