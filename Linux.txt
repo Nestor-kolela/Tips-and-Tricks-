@@ -106,3 +106,17 @@ i2cdetect -l
 
 35) How minicom data into a file
 sudo minicom -C /home/nestor/serial.log -D /dev/ttyUSB0
+
+36) Set the password for root
+sudo passwd root
+
+37) Login as root
+su - or 
+sudo -i
+
+38) How to change the password for a particular user
+sudo passwd debian where debian is the username
+
+39) Scan a i2c bus
+sudo i2cdetect -y -r 1
+

@@ -1,0 +1,10 @@
+1) How to compile a dts file to dtb
+cpp -nostdinc \
+  -I include \
+  -I arch/arm64/boot/dts \
+  -I arch/arm64/boot/dts/ti \
+  -undef -x assembler-with-cpp \
+  arch/arm64/boot/dts/ti/k3-am67a-beagley-ai-spidev0-mcu.dts \
+| dtc -@ -I dts -O dtb \
+  -o k3-am67a-beagley-ai-spidev0-mcu.dtbo
+
